@@ -21,9 +21,9 @@
     --off-bg: #FBF0EB;
     --tick: #5A8A60;
   }
- 
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
   body {
     background: var(--cream);
     color: var(--deep);
@@ -32,31 +32,31 @@
     min-height: 100vh;
     padding: 2rem 1rem 4rem;
   }
- 
+
   .page {
     max-width: 680px;
     margin: 0 auto;
   }
- 
+
   header {
     text-align: center;
     margin-bottom: 2.5rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid var(--soft);
   }
- 
+
   h1 {
     font-family: 'DM Serif Display', serif;
     font-size: 2.2rem;
     color: var(--deep);
     line-height: 1.1;
   }
- 
+
   h1 em {
     font-style: italic;
     color: var(--accent);
   }
- 
+
   .subtitle {
     margin-top: 0.5rem;
     font-size: 0.85rem;
@@ -64,7 +64,7 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
- 
+
   /* Shift selector */
   .shift-selector {
     display: flex;
@@ -73,7 +73,7 @@
     margin-bottom: 2rem;
     flex-wrap: wrap;
   }
- 
+
   .shift-btn {
     padding: 0.45rem 1.1rem;
     border-radius: 2rem;
@@ -85,47 +85,47 @@
     cursor: pointer;
     transition: all 0.2s;
   }
- 
+
   .shift-btn.early { background: var(--early-bg); color: var(--early); border-color: var(--early); }
   .shift-btn.late  { background: var(--late-bg);  color: var(--late);  border-color: var(--late);  }
   .shift-btn.off   { background: var(--off-bg);   color: var(--off);   border-color: var(--off);   }
- 
+
   .shift-btn:not(.active) { opacity: 0.4; }
   .shift-btn.active { opacity: 1; }
- 
+
   /* Day cards */
   .days-grid {
     display: flex;
     flex-direction: column;
     gap: 0.9rem;
   }
- 
+
   .day-card {
     border-radius: 14px;
     padding: 1.1rem 1.3rem;
     transition: box-shadow 0.2s;
   }
- 
+
   .day-card.early { background: var(--early-bg); border-left: 4px solid var(--early); }
   .day-card.late  { background: var(--late-bg);  border-left: 4px solid var(--late); }
   .day-card.off   { background: var(--off-bg);   border-left: 4px solid var(--off); }
- 
+
   .day-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0.8rem;
   }
- 
+
   .day-name {
     font-family: 'DM Serif Display', serif;
     font-size: 1.15rem;
   }
- 
+
   .day-card.early .day-name { color: var(--early); }
   .day-card.late  .day-name { color: var(--late); }
   .day-card.off   .day-name { color: var(--off); }
- 
+
   .shift-label {
     font-size: 0.7rem;
     font-weight: 500;
@@ -134,14 +134,14 @@
     padding: 0.2rem 0.65rem;
     border-radius: 1rem;
   }
- 
+
   .day-card.early .shift-label { background: var(--early); color: white; }
   .day-card.late  .shift-label { background: var(--late);  color: white; }
   .day-card.off   .shift-label { background: var(--off);   color: white; }
- 
+
   /* Tasks */
   .tasks { display: flex; flex-direction: column; gap: 0.45rem; }
- 
+
   .task {
     display: flex;
     align-items: flex-start;
@@ -152,11 +152,11 @@
     border-radius: 8px;
     transition: background 0.15s;
   }
- 
+
   .task:hover { background: rgba(0,0,0,0.04); }
- 
+
   .task input[type="checkbox"] { display: none; }
- 
+
   .check-box {
     width: 18px;
     height: 18px;
@@ -170,33 +170,33 @@
     transition: all 0.18s;
     background: white;
   }
- 
+
   .task.done .check-box {
     background: var(--tick);
     border-color: var(--tick);
   }
- 
+
   .check-box svg { display: none; }
   .task.done .check-box svg { display: block; }
- 
+
   .task-text {
     font-size: 0.88rem;
     line-height: 1.4;
     color: var(--deep);
     transition: opacity 0.18s;
   }
- 
+
   .task.done .task-text {
     opacity: 0.45;
     text-decoration: line-through;
   }
- 
+
   .task-note {
     font-size: 0.75rem;
     color: var(--mid);
     margin-top: 0.15rem;
   }
- 
+
   /* Weekly check-in */
   .checkin {
     margin-top: 2rem;
@@ -205,19 +205,19 @@
     padding: 1.3rem 1.4rem;
     border: 1px solid var(--soft);
   }
- 
+
   .checkin h2 {
     font-family: 'DM Serif Display', serif;
     font-size: 1.2rem;
     margin-bottom: 0.3rem;
   }
- 
+
   .checkin p {
     font-size: 0.82rem;
     color: var(--mid);
     margin-bottom: 1rem;
   }
- 
+
   .checkin-q {
     display: flex;
     align-items: flex-start;
@@ -234,13 +234,13 @@
   .checkin-q .check-box { min-width: 18px; }
   .checkin-q.done .check-box { background: var(--accent); border-color: var(--accent); }
   .checkin-q.done .task-text { opacity: 0.5; text-decoration: line-through; }
- 
+
   /* Reset */
   .reset-row {
     text-align: center;
     margin-top: 2rem;
   }
- 
+
   .reset-btn {
     background: none;
     border: 1.5px solid var(--soft);
@@ -252,9 +252,9 @@
     cursor: pointer;
     transition: all 0.2s;
   }
- 
+
   .reset-btn:hover { border-color: var(--accent); color: var(--accent); }
- 
+
   .progress-row {
     display: flex;
     align-items: center;
@@ -263,7 +263,7 @@
     font-size: 0.78rem;
     color: var(--mid);
   }
- 
+
   .progress-bar {
     flex: 1;
     height: 5px;
@@ -271,7 +271,7 @@
     border-radius: 3px;
     overflow: hidden;
   }
- 
+
   .progress-fill {
     height: 100%;
     background: var(--accent);
@@ -279,7 +279,7 @@
     transition: width 0.3s ease;
     width: 0%;
   }
- 
+
   footer {
     text-align: center;
     margin-top: 2.5rem;
@@ -291,21 +291,21 @@
 </head>
 <body>
 <div class="page">
- 
+
   <header>
     <h1>My Weekly <em>Wellness</em> Plan</h1>
     <p class="subtitle">Shift-aware · Simple · Forgiving</p>
   </header>
- 
+
   <div class="shift-selector">
     <button class="shift-btn early active" onclick="filterShift('all')">All Days</button>
     <button class="shift-btn early" onclick="filterShift('early')">🌅 Early Shifts</button>
     <button class="shift-btn late"  onclick="filterShift('late')">🌆 Late Shifts</button>
     <button class="shift-btn off"   onclick="filterShift('off')">☀️ Days Off</button>
   </div>
- 
+
   <div class="days-grid" id="days">
- 
+
     <!-- EARLY DAYS -->
     <div class="day-card early" data-type="early">
       <div class="day-header">
@@ -320,7 +320,7 @@
         <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">10 min gentle movement if energy allows — walk is enough</div></span></label>
       </div>
     </div>
- 
+
     <!-- LATE DAYS -->
     <div class="day-card late" data-type="late">
       <div class="day-header">
@@ -335,7 +335,7 @@
         <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">No high-sugar snacks to push through the afternoon slump</div><div class="task-note">Try water + a handful of nuts instead.</div></span></label>
       </div>
     </div>
- 
+
     <!-- DAYS OFF -->
     <div class="day-card off" data-type="off">
       <div class="day-header">
@@ -350,9 +350,9 @@
         <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Take 5 minutes for your weekly check-in (see below)</div></span></label>
       </div>
     </div>
- 
+
   </div>
- 
+
   <!-- WEEKLY CHECK-IN -->
   <div class="checkin">
     <h2>Weekly Check-in</h2>
@@ -366,15 +366,15 @@
       <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
     </div>
   </div>
- 
+
   <div class="reset-row">
     <button class="reset-btn" onclick="resetAll()">↺ Reset all ticks for new cycle</button>
   </div>
- 
+
   <footer>Built around your 3 early · 3 late · 3 off rotation</footer>
- 
+
 </div>
- 
+
 <script>
   // Checkbox toggle
   document.querySelectorAll('.task, .checkin-q').forEach(item => {
@@ -383,14 +383,14 @@
       updateProgress();
     });
   });
- 
+
   function updateProgress() {
     const qs = document.querySelectorAll('.checkin-q');
     const done = Array.from(qs).filter(q => q.classList.contains('done')).length;
     document.getElementById('progress-label').textContent = done + ' of ' + qs.length;
     document.getElementById('progress-fill').style.width = (done / qs.length * 100) + '%';
   }
- 
+
   function filterShift(type) {
     const cards = document.querySelectorAll('.day-card');
     cards.forEach(card => {
@@ -399,7 +399,7 @@
     document.querySelectorAll('.shift-btn').forEach(btn => btn.classList.remove('active'));
     event.target.classList.add('active');
   }
- 
+
   function resetAll() {
     document.querySelectorAll('.task, .checkin-q').forEach(item => item.classList.remove('done'));
     updateProgress();
