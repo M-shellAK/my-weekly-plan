@@ -155,7 +155,7 @@
 
   .task:hover { background: rgba(0,0,0,0.04); }
 
-  .task input[type="checkbox"] { display: none; }
+
 
   .check-box {
     width: 18px;
@@ -230,7 +230,6 @@
     transition: background 0.15s;
   }
   .checkin-q:hover { background: rgba(0,0,0,0.04); }
-  .checkin-q input { display: none; }
   .checkin-q .check-box { min-width: 18px; }
   .checkin-q.done .check-box { background: var(--accent); border-color: var(--accent); }
   .checkin-q.done .task-text { opacity: 0.5; text-decoration: line-through; }
@@ -298,10 +297,10 @@
   </header>
 
   <div class="shift-selector">
-    <button class="shift-btn early active" onclick="filterShift('all')">All Days</button>
-    <button class="shift-btn early" onclick="filterShift('early')">🌅 Early Shifts</button>
-    <button class="shift-btn late"  onclick="filterShift('late')">🌆 Late Shifts</button>
-    <button class="shift-btn off"   onclick="filterShift('off')">☀️ Days Off</button>
+    <button class="shift-btn early active" onclick="filterShift('all', this)">All Days</button>
+    <button class="shift-btn early" onclick="filterShift('early', this)">🌅 Early Shifts</button>
+    <button class="shift-btn late"  onclick="filterShift('late', this)">🌆 Late Shifts</button>
+    <button class="shift-btn off"   onclick="filterShift('off', this)">☀️ Days Off</button>
   </div>
 
   <div class="days-grid" id="days">
@@ -313,11 +312,11 @@
         <span class="shift-label">🌅 0500 start</span>
       </div>
       <div class="tasks">
-        <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Prep food the night before — don't rely on willpower at 4am</div></span></label>
-        <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Eat breakfast before or just after starting — don't skip it</div><div class="task-note">Protein + complex carb. Eggs, yoghurt, oats.</div></span></label>
-        <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Use the plate method at your main meal today</div><div class="task-note">½ veg, ¼ protein, ¼ complex carbs. No weighing needed.</div></span></label>
-        <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Protect your sleep window after this shift</div><div class="task-note">Phone down, curtains closed. Sleep is part of the plan.</div></span></label>
-        <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">10 min gentle movement if energy allows — walk is enough</div></span></label>
+        <div class="task" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Prep food the night before — don't rely on willpower at 4am</div></span></div>
+        <div class="task" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Eat breakfast before or just after starting — don't skip it</div><div class="task-note">Protein + complex carb. Eggs, yoghurt, oats.</div></span></div>
+        <div class="task" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Use the plate method at your main meal today</div><div class="task-note">½ veg, ¼ protein, ¼ complex carbs. No weighing needed.</div></span></div>
+        <div class="task" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Protect your sleep window after this shift</div><div class="task-note">Phone down, curtains closed. Sleep is part of the plan.</div></span></div>
+        <div class="task" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">10 min gentle movement if energy allows — walk is enough</div></span></div>
       </div>
     </div>
 
@@ -328,11 +327,11 @@
         <span class="shift-label">🌆 1200–2200</span>
       </div>
       <div class="tasks">
-        <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Use your morning — eat a proper breakfast before heading in</div></span></label>
-        <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">20-min morning movement before your shift</div><div class="task-note">Best window you have. Bodyweight squats, a brisk walk, anything.</div></span></label>
-        <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Plate method at lunch/main meal</div></span></label>
-        <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">If finishing at 2200 — keep the post-shift meal light</div><div class="task-note">Soup, eggs, small leftovers. Not a full dinner late at night.</div></span></label>
-        <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">No high-sugar snacks to push through the afternoon slump</div><div class="task-note">Try water + a handful of nuts instead.</div></span></label>
+        <div class="task" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Use your morning — eat a proper breakfast before heading in</div></span></div>
+        <div class="task" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">20-min morning movement before your shift</div><div class="task-note">Best window you have. Bodyweight squats, a brisk walk, anything.</div></span></div>
+        <div class="task" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Plate method at lunch/main meal</div></span></div>
+        <div class="task" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">If finishing at 2200 — keep the post-shift meal light</div><div class="task-note">Soup, eggs, small leftovers. Not a full dinner late at night.</div></span></div>
+        <div class="task" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">No high-sugar snacks to push through the afternoon slump</div><div class="task-note">Try water + a handful of nuts instead.</div></span></div>
       </div>
     </div>
 
@@ -343,11 +342,11 @@
         <span class="shift-label">☀️ Rest & reset</span>
       </div>
       <div class="tasks">
-        <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Do your main workout today — aim for 30–40 min</div><div class="task-note">Aerobic + at least one resistance block (squats, lunges, push-ups).</div></span></label>
-        <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Batch cook or prep for the upcoming shift block</div><div class="task-note">Boiled eggs, cut veg, grain salad, portioned snacks.</div></span></label>
-        <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">3 regular meals using the plate method</div><div class="task-note">Days off are when you build the rhythm.</div></span></label>
-        <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Do your waist measurement (once a fortnight on a day off)</div><div class="task-note">First thing in the morning, same spot each time.</div></span></label>
-        <label class="task"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Take 5 minutes for your weekly check-in (see below)</div></span></label>
+        <div class="task" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Do your main workout today — aim for 30–40 min</div><div class="task-note">Aerobic + at least one resistance block (squats, lunges, push-ups).</div></span></div>
+        <div class="task" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Batch cook or prep for the upcoming shift block</div><div class="task-note">Boiled eggs, cut veg, grain salad, portioned snacks.</div></span></div>
+        <div class="task" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">3 regular meals using the plate method</div><div class="task-note">Days off are when you build the rhythm.</div></span></div>
+        <div class="task" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Do your waist measurement (once a fortnight on a day off)</div><div class="task-note">First thing in the morning, same spot each time.</div></span></div>
+        <div class="task" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><div class="task-text">Take 5 minutes for your weekly check-in (see below)</div></span></div>
       </div>
     </div>
 
@@ -357,10 +356,10 @@
   <div class="checkin">
     <h2>Weekly Check-in</h2>
     <p>Do this once on a day off. No scores, no guilt — just noticing.</p>
-    <label class="checkin-q"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Did I eat roughly to the plan most days this cycle?</span></label>
-    <label class="checkin-q"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Did I move at least twice this cycle?</span></label>
-    <label class="checkin-q"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Did I protect my sleep most days?</span></label>
-    <label class="checkin-q"><input type="checkbox"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Did I do my batch prep before the early block started?</span></label>
+    <div class="checkin-q" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Did I eat roughly to the plan most days this cycle?</span></div>
+    <div class="checkin-q" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Did I move at least twice this cycle?</span></div>
+    <div class="checkin-q" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Did I protect my sleep most days?</span></div>
+    <div class="checkin-q" onclick="toggleItem(this)"><span class="check-box"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text">Did I do my batch prep before the early block started?</span></div>
     <div class="progress-row">
       <span id="progress-label">0 of 4</span>
       <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
@@ -376,14 +375,10 @@
 </div>
 
 <script>
-  // Checkbox toggle
-  document.querySelectorAll('.task, .checkin-q').forEach(item => {
-    item.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.classList.toggle('done');
-      updateProgress();
-    });
-  });
+  function toggleItem(el) {
+    el.classList.toggle('done');
+    updateProgress();
+  }
 
   function updateProgress() {
     const qs = document.querySelectorAll('.checkin-q');
@@ -392,13 +387,13 @@
     document.getElementById('progress-fill').style.width = (done / qs.length * 100) + '%';
   }
 
-  function filterShift(type) {
+  function filterShift(type, btn) {
     const cards = document.querySelectorAll('.day-card');
     cards.forEach(card => {
       card.style.display = (type === 'all' || card.dataset.type === type) ? 'block' : 'none';
     });
-    document.querySelectorAll('.shift-btn').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
+    document.querySelectorAll('.shift-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
   }
 
   function resetAll() {
