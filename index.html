@@ -378,7 +378,8 @@
 <script>
   // Checkbox toggle
   document.querySelectorAll('.task, .checkin-q').forEach(item => {
-    item.addEventListener('click', function() {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
       this.classList.toggle('done');
       updateProgress();
     });
